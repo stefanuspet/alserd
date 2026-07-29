@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0c0a09;
+  --foreground: #efe6d8;
+
+  --color-bg: #0c0a09;
+  --color-panel: #161110;
+  --color-panel-alt: #1c1614;
+  --color-maroon-deep: #5e1620;
+  --color-maroon: #7d2130;
+  --color-maroon-bright: #9c2c3d;
+  --color-gold: #d9b26a;
+  --color-gold-soft: #c9a562;
+  --color-white-bright: #fdfaf4;
+  --color-text: #efe6d8;
+  --color-text-dim: #c9bda9;
+  --color-line: rgba(217, 178, 106, 0.28);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-bg: var(--color-bg);
+  --color-panel: var(--color-panel);
+  --color-panel-alt: var(--color-panel-alt);
+  --color-maroon-deep: var(--color-maroon-deep);
+  --color-maroon: var(--color-maroon);
+  --color-maroon-bright: var(--color-maroon-bright);
+  --color-gold: var(--color-gold);
+  --color-gold-soft: var(--color-gold-soft);
+  --color-white-bright: var(--color-white-bright);
+  --color-text: var(--color-text);
+  --color-text-dim: var(--color-text-dim);
+  --color-line: var(--color-line);
+
+  --font-serif: var(--font-cormorant), serif;
+  --font-sans: var(--font-manrope), sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: #1a1310;
+}
