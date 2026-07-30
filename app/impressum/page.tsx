@@ -25,11 +25,11 @@ export default function ImpressumPage() {
             <div className="space-y-10">
               <LegalSection title="Alserd">
                 <p>
-                  Inhaberin: Rehatta Linda Elisabeth
+                  Inhaberin: Rehatta Linda Elisabeth Einzelunternehmen
                   <br />
-                  Marktallee 52
+                  Clemens-August Straße 22B
                   <br />
-                  48165 Münster
+                  59320 Ennigerloh
                   <br />
                   Deutschland
                 </p>
@@ -50,11 +50,11 @@ export default function ImpressumPage() {
 
               <LegalSection title="Verantwortlich für den Inhalt gemäß § 18 Abs. 2 MStV">
                 <p>
-                  Rehatta Linda Elisabeth
+                  Rehatta Linda Elisabeth Einzelunternehmen
                   <br />
-                  Marktallee 52
+                  Clemens-August Straße 22B
                   <br />
-                  48165 Münster
+                  59320 Ennigerloh
                   <br />
                   Deutschland
                 </p>
@@ -62,9 +62,10 @@ export default function ImpressumPage() {
 
               <LegalSection title="Unternehmensprofil">
                 <p>
-                  Alserd ist ein deutsches Unternehmen mit Schwerpunkt auf
-                  Außenhandel (Export und Import), Online-Handel sowie der
-                  Vermittlung internationaler Handelsbeziehungen.
+                  Rehatta Linda Elisabeth Einzelunternehmen ist ein deutsches
+                  Unternehmen mit Schwerpunkt auf Außenhandel (Export &amp;
+                  Import), Online-Handel sowie der Vermittlung internationaler
+                  Handelsbeziehungen.
                 </p>
                 <p>
                   Unser Angebot umfasst ausgewählte Importprodukte sowie die

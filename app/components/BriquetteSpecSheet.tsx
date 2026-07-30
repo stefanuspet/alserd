@@ -96,12 +96,7 @@ export default function BriquetteSpecSheet({
           </div>
 
           {sheet.images ? (
-            <div
-              className="grid gap-3 border-t border-line p-6 sm:gap-4 sm:p-8"
-              style={{
-                gridTemplateColumns: `repeat(${Math.min(sheet.images.length, 3)}, minmax(0, 1fr))`,
-              }}
-            >
+            <div className="grid grid-cols-3 gap-3 border-t border-line p-6 sm:gap-4 sm:p-8">
               {sheet.images.map((image) => (
                 <div
                   key={image}

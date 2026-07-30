@@ -341,7 +341,8 @@ export const PRODUCTS: ProductDetail[] = [
       "BBQ briquettes and shisha charcoal for restaurants, retailers, and private label brands across Europe.",
     intro:
       "Our charcoal range is produced from sustainably sourced hardwood, prepared to meet the burn time, ash content, and packaging standards required for the European food service and retail market.",
-    thumbnail: "/assets/images/products/charcoal/charcoal-bbq-briquettes.jpeg",
+    thumbnail:
+      "/assets/images/products/charcoal/charcoal-shisha-glowing-briquettes.jpeg",
     forms: ["BBQ Briquettes", "Shisha Charcoal"],
     applications: [
       "Restaurants & Food Service",
@@ -392,15 +393,15 @@ export const PRODUCTS: ProductDetail[] = [
           "Inner plastic and master box /10kg. Silica gel included.",
         ],
         images: [
-          "/assets/images/products/charcoal/charcoal-shisha-pipe-fulls.jpeg",
-          "/assets/images/products/charcoal/charcoal-shisha-cubes.jpeg",
-          "/assets/images/products/charcoal/charcoal-shisha-flat.jpeg",
+          // "/assets/images/products/charcoal/charcoal-shisha-pipe-fulls.jpeg",
+          // "/assets/images/products/charcoal/charcoal-shisha-cubes.jpeg",
+          // "/assets/images/products/charcoal/charcoal-shisha-flat.jpeg",
           "/assets/images/products/charcoal/charcoal-shisha-hexagonal.jpeg",
           "/assets/images/products/charcoal/charcoal-shisha-glowing-briquettes.jpeg",
-          "/assets/images/products/charcoal/charcoal-shisha-cubes-lit.jpeg",
+          // "/assets/images/products/charcoal/charcoal-shisha-cubes-lit.jpeg",
           "/assets/images/products/charcoal/charcoal-shisha-cubes-stack.jpeg",
           "/assets/images/products/charcoal/charcoal-shisha-hookah-glow.jpeg",
-          "/assets/images/products/charcoal/charcoal-shisha-burner-glow.jpeg",
+          // "/assets/images/products/charcoal/charcoal-shisha-burner-glow.jpeg",
         ],
       },
       {
@@ -442,11 +443,12 @@ export const PRODUCTS: ProductDetail[] = [
         packaging: ["Inner plastic and master box /10kg. Silica gel included."],
         images: [
           "/assets/images/products/charcoal/charcoal-bbq-hexagonal.jpeg",
-          "/assets/images/products/charcoal/charcoal-bbq-rectangle.jpeg",
-          "/assets/images/products/charcoal/charcoal-bbq-rectangular-prism.jpeg",
-          "/assets/images/products/charcoal/charcoal-bbq-grill-glow.jpeg",
-          "/assets/images/products/charcoal/charcoal-bbq-skewers.jpeg",
-          "/assets/images/products/charcoal/charcoal-bbq-embers-closeup.jpeg",
+          "/assets/images/products/charcoal/charcoal-bbq-grill-meat.webp",
+          // "/assets/images/products/charcoal/charcoal-bbq-rectangle.jpeg",
+          // "/assets/images/products/charcoal/charcoal-bbq-rectangular-prism.jpeg",
+          // "/assets/images/products/charcoal/charcoal-bbq-grill-glow.jpeg",
+          // "/assets/images/products/charcoal/charcoal-bbq-skewers.jpeg",
+          // "/assets/images/products/charcoal/charcoal-bbq-embers-closeup.jpeg",
         ],
       },
     ],

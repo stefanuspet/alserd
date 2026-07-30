@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-4 text-center sm:grid-cols-3 sm:text-left">
         <div className="flex items-center justify-center sm:justify-start">
           <Image
-            src="/assets/images/logo/Logo-full-cropped.png"
+            src="/assets/images/logo/New_Logo.png"
             alt="Alserd"
             width={448}
             height={307}
@@ -16,8 +16,7 @@ export default function Footer() {
         </div>
 
         <div className="text-sm text-white-bright/70 text-center">
-          © 2026 Rehatta Linda Elisabeth, Einzelunternehmen, Germany. All rights
-          reserved.
+          © 2026 - Alserd
         </div>
 
         <div className="flex flex-col items-center gap-1 sm:items-end">
@@ -25,6 +24,12 @@ export default function Footer() {
             Reliable Products. Fair Partnerships.
           </div>
           <div className="flex gap-5">
+            <Link
+              href="/#contact"
+              className="text-sm font-bold text-white-bright/85 transition-colors hover:text-gold"
+            >
+              Kontakt
+            </Link>
             <Link
               href="/impressum"
               className="text-sm font-bold text-white-bright/85 transition-colors hover:text-gold"

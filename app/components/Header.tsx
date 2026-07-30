@@ -7,8 +7,8 @@ import { useState } from "react";
 const NAV_LINKS = [
   { href: "/#about", label: "About" },
   { href: "/#products", label: "Products" },
-  { href: "/#approach", label: "Approach" },
-  { href: "/#why-alserd", label: "Why Alserd" },
+  // { href: "/#approach", label: "Approach" },
+  // { href: "/#why-alserd", label: "Why Alserd" },
   { href: "/#contact", label: "Contact" },
 ];
 
@@ -20,7 +20,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-[1180px] items-center justify-between px-4 py-4 sm:px-8">
         <Link href="/" className="flex items-center">
           <Image
-            src="/assets/images/logo/Logo-full-cropped.png"
+            src="/assets/images/logo/New_Logo.png"
             alt="Alserd"
             width={448}
             height={307}

@@ -31,7 +31,10 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${manrope.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-bg text-text font-sans">
+      <body
+        className="min-h-full flex flex-col bg-bg text-text font-sans"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>
