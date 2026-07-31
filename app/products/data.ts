@@ -394,7 +394,8 @@ export const PRODUCTS: ProductDetail[] = [
       "BBQ briquettes and shisha charcoal for restaurants, retailers, and private label brands across Europe.",
     intro:
       "Our charcoal range is produced from sustainably sourced hardwood, prepared to meet the burn time, ash content, and packaging standards required for the European food service and retail market.",
-    thumbnail: "/assets/images/products/charcoal/charcoal-bbq-party-grill.jpeg",
+    thumbnail:
+      "/assets/images/products/charcoal/charcoal-shisha-burner-ring.jpeg",
     forms: ["BBQ Briquettes", "Shisha Charcoal"],
     galleryImages: [
       {
