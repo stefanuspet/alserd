@@ -75,46 +75,13 @@ export default async function ProductDetailPage({
               {product.intro}
             </p>
 
-            {product.categories ? (
-              <div className="mt-12 space-y-14 sm:mt-14">
-                {product.categories.map((category) => (
-                  <div key={category.title}>
-                    <div className="mb-6 text-sm font-extrabold tracking-[0.18em] text-gold uppercase">
-                      {category.title}
-                    </div>
-                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                      {category.items.map((item) => (
-                        <div
-                          key={item.name}
-                          className="overflow-hidden rounded-lg border border-line bg-panel-alt"
-                        >
-                          <div className="relative h-48 w-full sm:h-56">
-                            <Image
-                              src={item.image}
-                              alt={item.name}
-                              fill
-                              className="object-cover"
-                              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                            />
-                          </div>
-                          <div className="p-6">
-                            <h4 className="font-serif text-lg font-bold text-white-bright sm:text-xl">
-                              {item.name}
-                            </h4>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
+            {product.forms ? (
               <div className="mt-12 sm:mt-14">
                 <div className="mb-5 text-sm font-extrabold tracking-[0.18em] text-gold uppercase">
                   Available Forms
                 </div>
                 <ul>
-                  {product.forms?.map((form, i) => (
+                  {product.forms.map((form, i) => (
                     <li
                       key={form}
                       className={`py-4 text-lg font-semibold text-white-bright ${
@@ -128,7 +95,23 @@ export default async function ProductDetailPage({
                   ))}
                 </ul>
               </div>
-            )}
+            ) : null}
+
+            {product.galleryImages?.length ? (
+              <div className="mt-8 grid grid-cols-3 gap-4 sm:mt-10 sm:gap-5">
+                {product.galleryImages.map((image) => (
+                  <Image
+                    key={image.src}
+                    src={image.src}
+                    alt={product.title}
+                    width={image.width}
+                    height={image.height}
+                    className="h-auto w-full self-start rounded-md"
+                    sizes="(min-width: 640px) 33vw, 50vw"
+                  />
+                ))}
+              </div>
+            ) : null}
 
             {product.specTable ? (
               <ProductSpecTable table={product.specTable} />

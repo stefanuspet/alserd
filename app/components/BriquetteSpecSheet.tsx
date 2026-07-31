@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { BriquetteSheet } from "../products/data";
 
 export default function BriquetteSpecSheet({
@@ -94,25 +93,6 @@ export default function BriquetteSpecSheet({
               </ul>
             </div>
           </div>
-
-          {sheet.images ? (
-            <div className="grid grid-cols-3 gap-3 border-t border-line p-6 sm:gap-4 sm:p-8">
-              {sheet.images.map((image) => (
-                <div
-                  key={image}
-                  className="relative h-40 w-full overflow-hidden rounded-md border border-line bg-panel sm:h-52"
-                >
-                  <Image
-                    src={image}
-                    alt={sheet.name}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 640px) 33vw, 50vw"
-                  />
-                </div>
-              ))}
-            </div>
-          ) : null}
         </div>
       ))}
     </div>

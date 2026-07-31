@@ -30,8 +30,8 @@ export default function ImpressumPage() {
                   Clemens-August Straße 22B
                   <br />
                   59320 Ennigerloh
-                  <br />
-                  Deutschland
+                  {/* <br />
+                  Deutschland */}
                 </p>
                 <p>
                   E-Mail:{" "}
@@ -42,10 +42,7 @@ export default function ImpressumPage() {
                     info@alserd.com
                   </a>
                 </p>
-                <p>
-                  Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:
-                  DE461313276
-                </p>
+                <p>USt-IdNr.:DE461313276</p>
               </LegalSection>
 
               <LegalSection title="Verantwortlich für den Inhalt gemäß § 18 Abs. 2 MStV">
@@ -55,14 +52,14 @@ export default function ImpressumPage() {
                   Clemens-August Straße 22B
                   <br />
                   59320 Ennigerloh
-                  <br />
-                  Deutschland
+                  {/* <br />
+                  Deutschland */}
                 </p>
               </LegalSection>
 
               <LegalSection title="Unternehmensprofil">
                 <p>
-                  Rehatta Linda Elisabeth Einzelunternehmen ist ein deutsches
+                  Rehatta Linda Elisabeth einzelunternehmen ist ein deutsches
                   Unternehmen mit Schwerpunkt auf Außenhandel (Export &amp;
                   Import), Online-Handel sowie der Vermittlung internationaler
                   Handelsbeziehungen.
@@ -89,9 +86,9 @@ export default function ImpressumPage() {
 
               <LegalSection title="Haftung für Inhalte">
                 <p>
-                  Die Inhalte dieser Website wurden mit größtmöglicher
-                  Sorgfalt erstellt. Dennoch übernehmen wir keine Gewähr für
-                  die Richtigkeit, Vollständigkeit oder Aktualität der
+                  Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt
+                  erstellt. Dennoch übernehmen wir keine Gewähr für die
+                  Richtigkeit, Vollständigkeit oder Aktualität der
                   bereitgestellten Informationen.
                 </p>
               </LegalSection>

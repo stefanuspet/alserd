@@ -49,6 +49,12 @@ export type BriquetteSpecItem = {
   value: string;
 };
 
+export type GalleryImage = {
+  src: string;
+  width: number;
+  height: number;
+};
+
 export type BriquetteSheet = {
   name: string;
   moq?: string;
@@ -56,7 +62,6 @@ export type BriquetteSheet = {
   specs: BriquetteSpecItem[];
   sizes: BriquetteSizeGroup[];
   packaging: string[];
-  images?: string[];
 };
 
 export type ProductDetail = {
@@ -68,6 +73,7 @@ export type ProductDetail = {
   thumbnail: string;
   categories?: ProductCategory[];
   forms?: string[];
+  galleryImages?: GalleryImage[];
   applications: string[];
   note: string;
   specTable?: SpecTable;
@@ -84,6 +90,53 @@ export const PRODUCTS: ProductDetail[] = [
     intro:
       "Our vanilla is sourced directly from smallholder farmers in Indonesia, known for their traditional curing expertise and consistent quality. We work closely with growers to make sure every batch meets the aroma, moisture, and appearance standards European buyers expect.",
     thumbnail: "/assets/images/products/vanilla/vanilla-crystalline-1.jpeg",
+    galleryImages: [
+      {
+        src: "/assets/images/products/vanilla/vanilla-beans-vacuum-pack.jpeg",
+        width: 900,
+        height: 1600,
+      },
+      {
+        src: "/assets/images/products/vanilla/vanilla-flower-1.jpeg",
+        width: 1000,
+        height: 667,
+      },
+      {
+        src: "/assets/images/products/vanilla/vanilla-pod-closeup.jpeg",
+        width: 720,
+        height: 1280,
+      },
+      {
+        src: "/assets/images/products/vanilla/vanilla-beans-rows.jpeg",
+        width: 800,
+        height: 602,
+      },
+      {
+        src: "/assets/images/products/vanilla/vanilla-crystalline-1.jpeg",
+        width: 1080,
+        height: 1440,
+      },
+      {
+        src: "/assets/images/products/vanilla/vanilla-caviar-1.jpeg",
+        width: 1600,
+        height: 900,
+      },
+      {
+        src: "/assets/images/products/vanilla/vanilla-beans-in-hand.jpeg",
+        width: 1066,
+        height: 1600,
+      },
+      {
+        src: "/assets/images/products/vanilla/vanilla-bean-plant-1.jpeg",
+        width: 1600,
+        height: 900,
+      },
+      {
+        src: "/assets/images/products/vanilla/vanilla-extract-1.jpeg",
+        width: 1101,
+        height: 800,
+      },
+    ],
     categories: [
       {
         title: "Vanilla Beans",
@@ -341,9 +394,35 @@ export const PRODUCTS: ProductDetail[] = [
       "BBQ briquettes and shisha charcoal for restaurants, retailers, and private label brands across Europe.",
     intro:
       "Our charcoal range is produced from sustainably sourced hardwood, prepared to meet the burn time, ash content, and packaging standards required for the European food service and retail market.",
-    thumbnail:
-      "/assets/images/products/charcoal/charcoal-shisha-glowing-briquettes.jpeg",
+    thumbnail: "/assets/images/products/charcoal/charcoal-bbq-party-grill.jpeg",
     forms: ["BBQ Briquettes", "Shisha Charcoal"],
+    galleryImages: [
+      {
+        src: "/assets/images/products/charcoal/charcoal-bbq-party-grill.jpeg",
+        width: 1600,
+        height: 1067,
+      },
+      {
+        src: "/assets/images/products/charcoal/charcoal-shisha-hookah-smoke.jpeg",
+        width: 1066,
+        height: 1600,
+      },
+      {
+        src: "/assets/images/products/charcoal/charcoal-shisha-tongs-glow.jpeg",
+        width: 1066,
+        height: 1600,
+      },
+      {
+        src: "/assets/images/products/charcoal/charcoal-shisha-cubes-lit.jpeg",
+        width: 342,
+        height: 269,
+      },
+      {
+        src: "/assets/images/products/charcoal/charcoal-shisha-burner-ring.jpeg",
+        width: 1600,
+        height: 1067,
+      },
+    ],
     applications: [
       "Restaurants & Food Service",
       "Retail & Private Label",
@@ -392,17 +471,6 @@ export const PRODUCTS: ProductDetail[] = [
           "Inner plastic (1 kg), inner box (1 kg), master box (10 kg). Silica gel included.",
           "Inner plastic and master box /10kg. Silica gel included.",
         ],
-        images: [
-          // "/assets/images/products/charcoal/charcoal-shisha-pipe-fulls.jpeg",
-          // "/assets/images/products/charcoal/charcoal-shisha-cubes.jpeg",
-          // "/assets/images/products/charcoal/charcoal-shisha-flat.jpeg",
-          "/assets/images/products/charcoal/charcoal-shisha-hexagonal.jpeg",
-          "/assets/images/products/charcoal/charcoal-shisha-glowing-briquettes.jpeg",
-          // "/assets/images/products/charcoal/charcoal-shisha-cubes-lit.jpeg",
-          "/assets/images/products/charcoal/charcoal-shisha-cubes-stack.jpeg",
-          "/assets/images/products/charcoal/charcoal-shisha-hookah-glow.jpeg",
-          // "/assets/images/products/charcoal/charcoal-shisha-burner-glow.jpeg",
-        ],
       },
       {
         name: "Barbecue / Grilled Briquettes",
@@ -441,15 +509,6 @@ export const PRODUCTS: ProductDetail[] = [
           { shape: "Rectangular Prism", dimensions: ["40 x 40 x 80 mm"] },
         ],
         packaging: ["Inner plastic and master box /10kg. Silica gel included."],
-        images: [
-          "/assets/images/products/charcoal/charcoal-bbq-hexagonal.jpeg",
-          "/assets/images/products/charcoal/charcoal-bbq-grill-meat.webp",
-          // "/assets/images/products/charcoal/charcoal-bbq-rectangle.jpeg",
-          // "/assets/images/products/charcoal/charcoal-bbq-rectangular-prism.jpeg",
-          // "/assets/images/products/charcoal/charcoal-bbq-grill-glow.jpeg",
-          // "/assets/images/products/charcoal/charcoal-bbq-skewers.jpeg",
-          // "/assets/images/products/charcoal/charcoal-bbq-embers-closeup.jpeg",
-        ],
       },
     ],
   },
