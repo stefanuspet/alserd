@@ -74,6 +74,9 @@ export type ProductDetail = {
   categories?: ProductCategory[];
   forms?: string[];
   galleryImages?: GalleryImage[];
+  galleryTop?: GalleryImage[];
+  galleryBottom?: GalleryImage[];
+  featuredGrid?: GalleryImage[];
   applications: string[];
   note: string;
   specTable?: SpecTable;
@@ -90,31 +93,23 @@ export const PRODUCTS: ProductDetail[] = [
     intro:
       "Our vanilla is sourced directly from smallholder farmers in Indonesia, known for their traditional curing expertise and consistent quality. We work closely with growers to make sure every batch meets the aroma, moisture, and appearance standards European buyers expect.",
     thumbnail: "/assets/images/products/vanilla/vanilla-crystalline-1.jpeg",
-    galleryImages: [
+    galleryTop: [
       {
-        src: "/assets/images/products/vanilla/vanilla-beans-vacuum-pack.jpeg",
-        width: 900,
-        height: 1600,
+        src: "/assets/images/products/vanilla/vanilla-bean-plant-1.jpeg",
+        width: 1600,
+        height: 900,
       },
       {
         src: "/assets/images/products/vanilla/vanilla-flower-1.jpeg",
         width: 1000,
         height: 667,
       },
-      {
-        src: "/assets/images/products/vanilla/vanilla-pod-closeup.jpeg",
-        width: 720,
-        height: 1280,
-      },
+    ],
+    galleryBottom: [
       {
         src: "/assets/images/products/vanilla/vanilla-beans-rows.jpeg",
         width: 800,
         height: 602,
-      },
-      {
-        src: "/assets/images/products/vanilla/vanilla-crystalline-1.jpeg",
-        width: 1080,
-        height: 1440,
       },
       {
         src: "/assets/images/products/vanilla/vanilla-caviar-1.jpeg",
@@ -122,19 +117,26 @@ export const PRODUCTS: ProductDetail[] = [
         height: 900,
       },
       {
-        src: "/assets/images/products/vanilla/vanilla-beans-in-hand.jpeg",
-        width: 1066,
-        height: 1600,
+        src: "/assets/images/products/vanilla/vanilla-pod-closeup.jpeg",
+        width: 720,
+        height: 1280,
       },
-      {
-        src: "/assets/images/products/vanilla/vanilla-bean-plant-1.jpeg",
-        width: 1600,
-        height: 900,
-      },
+    ],
+    featuredGrid: [
       {
         src: "/assets/images/products/vanilla/vanilla-extract-1.jpeg",
         width: 1101,
         height: 800,
+      },
+      {
+        src: "/assets/images/products/vanilla/vanilla-beans-vacuum-pack.jpeg",
+        width: 900,
+        height: 1600,
+      },
+      {
+        src: "/assets/images/products/vanilla/vanilla-beans-in-hand.jpeg",
+        width: 1066,
+        height: 1600,
       },
     ],
     categories: [
@@ -397,7 +399,19 @@ export const PRODUCTS: ProductDetail[] = [
     thumbnail:
       "/assets/images/products/charcoal/charcoal-shisha-burner-ring.jpeg",
     forms: ["BBQ Briquettes", "Shisha Charcoal"],
-    galleryImages: [
+    galleryTop: [
+      {
+        src: "/assets/images/products/charcoal/charcoal-shisha-cubes-lit.jpeg",
+        width: 342,
+        height: 269,
+      },
+      {
+        src: "/assets/images/products/charcoal/charcoal-shisha-burner-ring.jpeg",
+        width: 1600,
+        height: 1067,
+      },
+    ],
+    galleryBottom: [
       {
         src: "/assets/images/products/charcoal/charcoal-bbq-party-grill.jpeg",
         width: 1600,
@@ -412,16 +426,6 @@ export const PRODUCTS: ProductDetail[] = [
         src: "/assets/images/products/charcoal/charcoal-shisha-tongs-glow.jpeg",
         width: 1066,
         height: 1600,
-      },
-      {
-        src: "/assets/images/products/charcoal/charcoal-shisha-cubes-lit.jpeg",
-        width: 342,
-        height: 269,
-      },
-      {
-        src: "/assets/images/products/charcoal/charcoal-shisha-burner-ring.jpeg",
-        width: 1600,
-        height: 1067,
       },
     ],
     applications: [

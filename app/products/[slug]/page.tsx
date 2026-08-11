@@ -6,7 +6,90 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ProductSpecTable from "../../components/ProductSpecTable";
 import BriquetteSpecSheet from "../../components/BriquetteSpecSheet";
-import { PRODUCTS, getProduct } from "../data";
+import { PRODUCTS, getProduct, type GalleryImage } from "../data";
+
+function GalleryBlock({
+  chunks,
+  alt,
+  size = "md",
+}: {
+  chunks: GalleryImage[][];
+  alt: string;
+  size?: "md" | "lg";
+}) {
+  if (!chunks.length) return null;
+  const imageClassName =
+    size === "lg"
+      ? "h-auto w-full max-w-[360px] rounded-md sm:max-w-[440px]"
+      : "h-auto w-full max-w-[260px] rounded-md sm:max-w-[320px]";
+  const sizes =
+    size === "lg" ? "(min-width: 640px) 440px, 60vw" : "(min-width: 640px) 320px, 45vw";
+  return (
+    <div className="my-10 space-y-6 sm:my-12">
+      {chunks.map((chunk, i) => (
+        <div
+          key={i}
+          className="flex flex-wrap justify-center gap-4 sm:gap-5"
+        >
+          {chunk.map((image) => (
+            <Image
+              key={image.src}
+              src={image.src}
+              alt={alt}
+              width={image.width}
+              height={image.height}
+              className={imageClassName}
+              sizes={sizes}
+            />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function UniformGrid({
+  images,
+  alt,
+  columns,
+  aspect = "portrait",
+}: {
+  images?: GalleryImage[];
+  alt: string;
+  columns: 2 | 3;
+  aspect?: "portrait" | "landscape";
+}) {
+  if (!images?.length) return null;
+  return (
+    <div
+      className={`mx-auto my-10 grid max-w-full gap-4 sm:my-12 sm:gap-5 ${
+        columns === 2 ? "grid-cols-2" : "grid-cols-3"
+      }`}
+    >
+      {images.map((image) => (
+        <div
+          key={image.src}
+          className={`relative overflow-hidden rounded-md ${
+            aspect === "landscape" ? "aspect-[16/10]" : "aspect-[3/4]"
+          }`}
+        >
+          <Image
+            src={image.src}
+            alt={alt}
+            fill
+            className="object-cover"
+            sizes={
+              columns === 2
+                ? "(min-width: 640px) 50vw, 50vw"
+                : "(min-width: 640px) 33vw, 33vw"
+            }
+          />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,var(--color-bg)_0%,transparent_18%,transparent_82%,var(--color-bg)_100%)]" />
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export function generateStaticParams() {
   return PRODUCTS.map((product) => ({ slug: product.slug }));
@@ -34,6 +117,23 @@ export default async function ProductDetailPage({
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) notFound();
+
+  const gallerySlots: GalleryImage[][][] = [[], [], [], []];
+  if (product.galleryImages) {
+    const chunks: GalleryImage[][] = [];
+    for (let i = 0; i < product.galleryImages.length; i += 2) {
+      chunks.push(product.galleryImages.slice(i, i + 2));
+    }
+    if (chunks.length > 1 && chunks[chunks.length - 1].length === 1) {
+      const lonely = chunks.pop()!;
+      chunks[chunks.length - 1].push(...lonely);
+    }
+    chunks.forEach((chunk, i) => gallerySlots[i % gallerySlots.length].push(chunk));
+  }
+  const topChunks = product.galleryTop ? [product.galleryTop] : gallerySlots[0];
+  const bottomChunks = product.galleryBottom
+    ? [product.galleryBottom]
+    : gallerySlots[3];
 
   return (
     <div className="flex flex-1 flex-col">
@@ -75,6 +175,17 @@ export default async function ProductDetailPage({
               {product.intro}
             </p>
 
+            {product.galleryTop ? (
+              <UniformGrid
+                images={product.galleryTop}
+                alt={product.title}
+                columns={2}
+                aspect="landscape"
+              />
+            ) : (
+              <GalleryBlock chunks={topChunks} alt={product.title} />
+            )}
+
             {product.forms ? (
               <div className="mt-12 sm:mt-14">
                 <div className="mb-5 text-sm font-extrabold tracking-[0.18em] text-gold uppercase">
@@ -97,21 +208,7 @@ export default async function ProductDetailPage({
               </div>
             ) : null}
 
-            {product.galleryImages?.length ? (
-              <div className="mt-8 grid grid-cols-3 gap-4 sm:mt-10 sm:gap-5">
-                {product.galleryImages.map((image) => (
-                  <Image
-                    key={image.src}
-                    src={image.src}
-                    alt={product.title}
-                    width={image.width}
-                    height={image.height}
-                    className="h-auto w-full self-start rounded-md"
-                    sizes="(min-width: 640px) 33vw, 50vw"
-                  />
-                ))}
-              </div>
-            ) : null}
+            <GalleryBlock chunks={gallerySlots[1]} alt={product.title} />
 
             {product.specTable ? (
               <ProductSpecTable table={product.specTable} />
@@ -120,6 +217,14 @@ export default async function ProductDetailPage({
             {product.briquetteSheets ? (
               <BriquetteSpecSheet sheets={product.briquetteSheets} />
             ) : null}
+
+            <UniformGrid
+              images={product.featuredGrid}
+              alt={product.title}
+              columns={3}
+            />
+
+            <GalleryBlock chunks={gallerySlots[2]} alt={product.title} />
 
             <div className="mt-12 sm:mt-14">
               <div className="mb-5 text-sm font-extrabold tracking-[0.18em] text-gold uppercase">
@@ -138,6 +243,16 @@ export default async function ProductDetailPage({
             <div className="mt-12 rounded-md border-l-4 border-gold bg-panel-alt p-8 text-base text-text-dim sm:mt-14 sm:p-10 sm:text-lg">
               {product.note}
             </div>
+
+            {product.galleryBottom ? (
+              <UniformGrid
+                images={product.galleryBottom}
+                alt={product.title}
+                columns={3}
+              />
+            ) : (
+              <GalleryBlock chunks={bottomChunks} alt={product.title} />
+            )}
 
             <div className="mt-12 flex flex-col items-start gap-4 sm:mt-14 sm:flex-row sm:items-center">
               <Link
