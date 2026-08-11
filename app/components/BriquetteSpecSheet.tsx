@@ -1,9 +1,12 @@
+import type { Dictionary } from "../i18n/dictionaries";
 import type { BriquetteSheet } from "../products/data";
 
 export default function BriquetteSpecSheet({
   sheets,
+  t,
 }: {
   sheets: BriquetteSheet[];
+  t: Dictionary["briquetteSheet"];
 }) {
   return (
     <div className="mt-12 space-y-14 sm:mt-14">
@@ -18,7 +21,7 @@ export default function BriquetteSpecSheet({
             </h3>
             {sheet.moq ? (
               <span className="text-xs font-extrabold tracking-[0.08em] text-gold uppercase">
-                MoQ: {sheet.moq}
+                {t.moq}: {sheet.moq}
               </span>
             ) : null}
           </div>
@@ -26,7 +29,7 @@ export default function BriquetteSpecSheet({
           <div className="grid grid-cols-1 gap-8 p-6 lg:grid-cols-2 sm:p-8">
             <div>
               <div className="mb-4 text-xs font-extrabold tracking-[0.18em] text-gold uppercase">
-                Product Specifications
+                {t.productSpecifications}
               </div>
 
               {sheet.features ? (
@@ -59,7 +62,7 @@ export default function BriquetteSpecSheet({
 
             <div>
               <div className="mb-4 text-xs font-extrabold tracking-[0.18em] text-gold uppercase">
-                Available Size
+                {t.availableSize}
               </div>
               <div className="space-y-4">
                 {sheet.sizes.map((group) => (
@@ -82,7 +85,7 @@ export default function BriquetteSpecSheet({
               </div>
 
               <div className="mt-5 text-xs font-extrabold tracking-[0.18em] text-gold uppercase">
-                Packaging
+                {t.packaging}
               </div>
               <ul className="mt-2 space-y-1.5">
                 {sheet.packaging.map((line) => (

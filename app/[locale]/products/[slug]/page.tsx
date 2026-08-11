@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import ProductSpecTable from "../../components/ProductSpecTable";
-import BriquetteSpecSheet from "../../components/BriquetteSpecSheet";
-import { PRODUCTS, getProduct, type GalleryImage } from "../data";
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
+import ProductSpecTable from "../../../components/ProductSpecTable";
+import BriquetteSpecSheet from "../../../components/BriquetteSpecSheet";
+import { isLocale, locales, type Locale } from "../../../i18n/config";
+import { getDictionary } from "../../../i18n/dictionaries";
+import { getProduct, getProducts, type GalleryImage } from "../../../products/data";
 
 function GalleryBlock({
   chunks,
@@ -92,16 +94,19 @@ function UniformGrid({
 }
 
 export function generateStaticParams() {
-  return PRODUCTS.map((product) => ({ slug: product.slug }));
+  return locales.flatMap((locale) =>
+    getProducts(locale).map((product) => ({ locale, slug: product.slug })),
+  );
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const product = getProduct(slug);
+  const { locale, slug } = await params;
+  if (!isLocale(locale)) return {};
+  const product = getProduct(locale, slug);
   if (!product) return {};
   return {
     title: `${product.title} | Alserd`,
@@ -112,10 +117,13 @@ export async function generateMetadata({
 export default async function ProductDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const product = getProduct(slug);
+  const { locale, slug } = await params;
+  if (!isLocale(locale)) notFound();
+  const typedLocale: Locale = locale;
+  const t = getDictionary(typedLocale);
+  const product = getProduct(typedLocale, slug);
   if (!product) notFound();
 
   const gallerySlots: GalleryImage[][][] = [[], [], [], []];
@@ -137,7 +145,7 @@ export default async function ProductDetailPage({
 
   return (
     <div className="flex flex-1 flex-col">
-      <Header />
+      <Header locale={typedLocale} />
       <main className="flex-1">
         <section className="relative overflow-hidden px-4 py-20 sm:px-8 sm:py-28">
           <Image
@@ -152,10 +160,10 @@ export default async function ProductDetailPage({
 
           <div className="relative mx-auto max-w-[1180px]">
             <Link
-              href="/#products"
+              href={`/${typedLocale}#products`}
               className="mb-6 inline-block text-sm font-bold tracking-[0.06em] text-gold uppercase hover:underline"
             >
-              ← Back to Products
+              {t.productDetail.backToProducts}
             </Link>
             <div className="mb-3 text-xs font-extrabold tracking-[0.18em] text-gold uppercase sm:text-sm">
               {product.tag}
@@ -189,7 +197,7 @@ export default async function ProductDetailPage({
             {product.forms ? (
               <div className="mt-12 sm:mt-14">
                 <div className="mb-5 text-sm font-extrabold tracking-[0.18em] text-gold uppercase">
-                  Available Forms
+                  {t.productDetail.availableForms}
                 </div>
                 <ul>
                   {product.forms.map((form, i) => (
@@ -211,11 +219,14 @@ export default async function ProductDetailPage({
             <GalleryBlock chunks={gallerySlots[1]} alt={product.title} />
 
             {product.specTable ? (
-              <ProductSpecTable table={product.specTable} />
+              <ProductSpecTable table={product.specTable} t={t.specTable} />
             ) : null}
 
             {product.briquetteSheets ? (
-              <BriquetteSpecSheet sheets={product.briquetteSheets} />
+              <BriquetteSpecSheet
+                sheets={product.briquetteSheets}
+                t={t.briquetteSheet}
+              />
             ) : null}
 
             <UniformGrid
@@ -228,7 +239,7 @@ export default async function ProductDetailPage({
 
             <div className="mt-12 sm:mt-14">
               <div className="mb-5 text-sm font-extrabold tracking-[0.18em] text-gold uppercase">
-                Applications
+                {t.productDetail.applications}
               </div>
               <ul className="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
                 {product.applications.map((app) => (
@@ -256,16 +267,16 @@ export default async function ProductDetailPage({
 
             <div className="mt-12 flex flex-col items-start gap-4 sm:mt-14 sm:flex-row sm:items-center">
               <Link
-                href="/#contact"
+                href={`/${typedLocale}#contact`}
                 className="w-full rounded-sm border border-gold bg-gold px-7 py-3.5 text-center text-sm font-extrabold tracking-[0.06em] text-[#241a12] uppercase transition-transform hover:-translate-y-0.5 hover:shadow-[0_8px_22px_rgba(217,178,106,0.35)] sm:w-auto"
               >
-                Request a Quote
+                {t.productDetail.requestQuote}
               </Link>
             </div>
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer locale={typedLocale} />
     </div>
   );
 }

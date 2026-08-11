@@ -1,29 +1,38 @@
 import Image from "next/image";
 import Link from "next/link";
-import { PRODUCTS } from "../products/data";
+import type { Locale } from "../i18n/config";
+import type { Dictionary } from "../i18n/dictionaries";
+import { getProducts } from "../products/data";
 import Reveal from "./Reveal";
 
-export default function Products() {
+export default function Products({
+  t,
+  locale,
+}: {
+  t: Dictionary["products"];
+  locale: Locale;
+}) {
+  const products = getProducts(locale);
+
   return (
     <section id="products" className="bg-panel px-4 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-[1180px]">
         <div className="mb-5 flex items-center gap-3.5 text-xs font-extrabold tracking-[0.22em] text-gold uppercase sm:text-sm">
           <span className="h-0.5 w-10 bg-gold" />
-          What We Offer
+          {t.eyebrow}
         </div>
         <h2 className="mb-4 font-serif text-4xl leading-tight font-bold text-white-bright sm:text-5xl md:text-6xl">
-          Our <em className="text-gold italic">Products</em>
+          {t.titleStart} <em className="text-gold italic">{t.titleEm}</em>
         </h2>
         <p className="max-w-2xl text-lg font-medium text-white-bright sm:text-xl">
-          Quality-focused sourcing from Indonesia, prepared to meet import
-          requirements for Germany and the European Union.
+          {t.description}
         </p>
 
         <Reveal className="mt-12 grid grid-cols-1 gap-6 sm:mt-16 md:grid-cols-2 md:gap-8">
-          {PRODUCTS.map((product) => (
+          {products.map((product) => (
             <Link
               key={product.slug}
-              href={`/products/${product.slug}`}
+              href={`/${locale}/products/${product.slug}`}
               className="group relative flex min-h-[300px] flex-col justify-end overflow-hidden rounded-lg border border-line p-8 transition-transform hover:-translate-y-1 sm:min-h-[420px] sm:p-10"
             >
               <Image
@@ -46,7 +55,7 @@ export default function Products() {
                   {product.summary}
                 </p>
                 <span className="text-sm font-extrabold tracking-[0.06em] text-gold uppercase group-hover:underline">
-                  View Details →
+                  {t.viewDetails}
                 </span>
               </div>
             </Link>

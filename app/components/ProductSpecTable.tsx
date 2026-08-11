@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import type { Dictionary } from "../i18n/dictionaries";
 import type { SpecTable } from "../products/data";
 
 const thClass =
@@ -6,7 +7,13 @@ const thClass =
 const tdClass =
   "border border-line px-3 py-2.5 align-top text-sm text-text";
 
-export default function ProductSpecTable({ table }: { table: SpecTable }) {
+export default function ProductSpecTable({
+  table,
+  t,
+}: {
+  table: SpecTable;
+  t: Dictionary["specTable"];
+}) {
   return (
     <div className="mt-12 sm:mt-14">
       <div className="mb-5 text-sm font-extrabold tracking-[0.18em] text-gold uppercase">
@@ -28,28 +35,28 @@ export default function ProductSpecTable({ table }: { table: SpecTable }) {
                 </tr>
                 <tr key={`${section.subtitle}-header`}>
                   <th className={thClass} style={{ background: "#d9b26a" }}>
-                    No
+                    {t.no}
                   </th>
                   <th className={thClass} style={{ background: "#d9b26a" }}>
-                    Product
+                    {t.product}
                   </th>
                   <th className={thClass} style={{ background: "#d9b26a" }}>
-                    Size
+                    {t.size}
                   </th>
                   <th className={thClass} style={{ background: "#d9b26a" }}>
-                    Weight
+                    {t.weight}
                   </th>
                   <th className={thClass} style={{ background: "#d9b26a" }}>
-                    Moisture Content
+                    {t.moistureContent}
                   </th>
                   <th className={thClass} style={{ background: "#d9b26a" }}>
-                    Packaging
+                    {t.packaging}
                   </th>
                   <th className={thClass} style={{ background: "#d9b26a" }}>
-                    Condition
+                    {t.condition}
                   </th>
                   <th className={thClass} style={{ background: "#d9b26a" }}>
-                    Aroma
+                    {t.aroma}
                   </th>
                 </tr>
                 {section.rows.map((row, i) => (
@@ -83,20 +90,20 @@ export default function ProductSpecTable({ table }: { table: SpecTable }) {
             </tr>
             <tr>
               <th className={thClass} style={{ background: "#d9b26a" }}>
-                No
+                {t.no}
               </th>
               <th className={thClass} style={{ background: "#d9b26a" }}>
-                Product
+                {t.product}
               </th>
               <th className={thClass} style={{ background: "#d9b26a" }}>
-                Size
+                {t.size}
               </th>
               <th
                 className={thClass}
                 colSpan={5}
                 style={{ background: "#d9b26a" }}
               >
-                Description
+                {t.description}
               </th>
             </tr>
             {table.derivativeRows.map((row, i) => (
