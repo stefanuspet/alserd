@@ -87,6 +87,7 @@ function UniformGrid({
             }
           />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,var(--color-bg)_0%,transparent_18%,transparent_82%,var(--color-bg)_100%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,var(--color-bg)_0%,transparent_18%,transparent_82%,var(--color-bg)_100%)]" />
         </div>
       ))}
     </div>
